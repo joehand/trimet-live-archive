@@ -18,7 +18,7 @@ module.exports = function (archive, opts) {
 
   return {
     fetch: function (cb) {
-      if (!cb) cb = function (err) { debug('[ERROR]', err) }
+      if (!cb) cb = function (err) { if (err) debug('[ERROR]', err) }
       debug('fetching data', liveURL)
 
       request(liveURL, {json: true}, function (err, response, body) {
